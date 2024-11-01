@@ -58,6 +58,9 @@ class Dotnet < Formula
   patch :DATA
 
   def install
+    # https://github.com/dotnet/core/blob/v8.0.10/release-notes/8.0/releases.json#L6C18-L6C25
+    inreplace "global.json", "8.0.107", "8.0.403"
+
     if OS.mac?
       # Deparallelize to reduce chances of missing PDBs
       ENV.deparallelize
