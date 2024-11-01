@@ -6,11 +6,6 @@ class LlvmAT15 < Formula
   # The LLVM Project is under the Apache License v2.0 with LLVM Exceptions
   license "Apache-2.0" => { with: "LLVM-exception" }
 
-  livecheck do
-    url :stable
-    regex(/^llvmorg[._-]v?(15(?:\.\d+)+)$/i)
-  end
-
   bottle do
     rebuild 1
     sha256 cellar: :any,                 arm64_sonoma:   "b767f1c1ae0719c1a8d1b5f7e7c7d9cead4eca26cab4b204c72800e824c06845"
@@ -26,6 +21,8 @@ class LlvmAT15 < Formula
   pour_bottle? only_if: :clt_installed
 
   keg_only :versioned_formula
+
+  deprecate! date: "2024-11-01", because: :versioned_formula
 
   # https://llvm.org/docs/GettingStarted.html#requirement
   # We intentionally use Make instead of Ninja.
